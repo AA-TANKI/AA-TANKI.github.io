@@ -5,6 +5,8 @@
     color: white;
     text-transform: capitalize;
 }
+html { scroll-behavior: smooth; }
+
 a{
   text-decoration: none;
   transition: color 0.3s ease;
@@ -22,6 +24,7 @@ nav, nav ul{
     display: flex;
     list-style: none;
     justify-content: space-between;
+    z-index: 2;
 }
 nav ul li{
     padding-right: 50px;
@@ -330,111 +333,68 @@ footer p {
   color: #777;
   font-size: 0.9rem;
 }
-@media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    gap: 3rem;
+@media screen and (max-width: 780px){
+  nav{
+    display: none;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column; /* نخلي الصورة فوق الكلام */
+    align-items: center;
     text-align: center;
+    gap: 2rem; /* مسافة بين الصورة والكلام */
+    margin: 50px auto;
   }
 
   .picture {
-    width: 320px;
-    height: 350px;
+    width: 250px;  /* نص الحجم الأصلي تقريباً */
+    height: 250px;
   }
 
-  .text h1 {
-    font-size: 2rem;
+  .text h1{
+    font-size: 28px; /* تصغير العنوان */
   }
 
-  .text h2 {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 768px) {
-
-nav, nav ul{
-    display: flex;
-    list-style: none;
-    justify-content: end;
-}
-  .logo {
-    font-size: 20px;
+  .text h2{
+    font-size: 22px; /* تصغير العنوان الفرعي */
   }
 
-  nav ul {
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  nav ul li a {
-    font-size: 14px;
+  .text p{
+    font-size: 16px; /* تصغير الفقرة */
+    line-height: 1.5;
+    padding: 0 10px;
   }
 
   .services-container,
-  .projects-container {
+  .projects-container,
+  .skills-container {
     flex-direction: column;
+    gap: 2rem;
     align-items: center;
   }
 
   .service-box,
   .project-box {
-    width: 90%;
+    width: 90%; /* عشان تملى الشاشة بدون مشاكل */
   }
-
-  .skills-container {
-    width: 95%;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-  }
-
   .moon {
-    top: 90px;
-    width: 80px;
-    height: 80px;
-  }
+  position: absolute; /* بدل fixed */
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* نخليه في الوسط بالضبط */
+  width: 220px;   /* أكبر شوية عشان يطلع كخلفية */
+  height: 220px;
+  background: radial-gradient(circle at 30% 30%, #dd0808 40%, #530a0a 80%, rgb(221, 14, 14) 0%);
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(201, 10, 10, 0.8);
+  z-index: 0; /* يكون ورا الكلام */
+  transition: opacity 0.5s ease;
 }
-@media (max-width: 900px) {
-  nav {
-    padding: 0 25px;
-    height: 60px;
-  }
 
-  .logo {
-    font-size: 20px;
-  }
-
-  nav ul {
-    gap: 15px;
-  }
-
-  nav ul li a {
-    font-size: 14px;
-  }
-
-  .moon {
-    top: 80px;
-    width: 90px;
-    height: 90px;
-  }
+/* الكلام يبقى فوق القمر */
+.text {
+  position: relative;
+  z-index: 1;
 }
-@media (max-width: 600px) {
-  nav {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  nav ul {
-    gap: 0px;
-  }
-
-  .moon {
-    top: 70px;
-    width: 70px;
-    height: 70px;
-  }
 }
