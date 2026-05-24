@@ -47,7 +47,7 @@ const navLinks = document.querySelector('nav ul');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('show');
-  hamburger.classList.toggle('active'); // optional: for animation
+  hamburger.classList.toggle('active');
 });
 
 // start
